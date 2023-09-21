@@ -17,61 +17,61 @@ def main():
     df_path = Path().cwd() / "data" / f"{args.dataset}.csv" 
     df = pd.read_csv(df_path)
 
-    if args.ml_model == "lstm":
+    if args.ml_model_model == "lstm":
         data_loader = dataloader.lstm.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         model = model.lstm.Model()
         model.fit(X_train, y_train)
 
-    if args.ml == 'prophet':
+    if args.ml_model == 'prophet':
         data_loader = dataloader.neural_prophet.DataLoader(df, args)
         df, df_train, df_val = data_loader.load_data()
         model = models.prophet.Model(args)
         model.fit(df_train, df_val)
 
-    if args.ml == 'neuralprophet':
+    if args.ml_model == 'neuralprophet':
         data_loader = dataloader.neural_prophet.DataLoader(df, args)
         df, df_train, df_val = data_loader.load_data()
         model = models.neural_prophet.Model(args)
         model.fit(df_train)
 
-    if args.ml == 'xgboost':
+    if args.ml_model == 'xgboost':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         model = models.xgboost.Model(args)
         model.fit(X_train, y_train)
 
-    if args.ml == 'lstm_multivariate':
+    if args.ml_model == 'lstm_multivariate':
         data_loader = data_loader.lstm_multivariate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         model = models.lstm_multivariate.Model(args)
         model.fit(X_train, y_train)
 
-    if args.ml == 'lightgbm':
+    if args.ml_model == 'lightgbm':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         model = models.lightgbm.Model(args)
         model.fit(X_train, y_train)
 
-    if args.ml == 'ensemble_XGBoost_lightgbm':
+    if args.ml_model == 'ensemble_XGBoost_lightgbm':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         model = models.ensemble.Model(args)
         model.fit(X_train, y_train)
 
-    if args.ml == 'ensemble_XGBoost_lightgbm_lstm_multivariate':
+    if args.ml_model == 'ensemble_XGBoost_lightgbm_lstm_multivariate':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         model = models.ensemble.Model(args)
         model.fit(X_train, y_train)
 
-    if args.ml == 'ensemble_lightgbm_lstm_multivariate':
+    if args.ml_model == 'ensemble_lightgbm_lstm_multivariate':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         model = models.ensemble.Model(args)
         model.fit(X_train, y_train)
 
-    if args.ml == 'ensemble_XGBoost_lstm_multivariate':
+    if args.ml_model == 'ensemble_XGBoost_lstm_multivariate':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         model = models.ensemble.Model(args)
