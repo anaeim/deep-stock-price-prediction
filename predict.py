@@ -48,7 +48,7 @@ def main():
             model = model_from_json(fh.read())
         y_test,y_pred = model.predict(df)
 
-    if args.ml == 'xgboost':
+    if args.ml_model == 'xgboost':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         _save_model_dir_path = models.xgboost.save_model_dir_path
@@ -57,7 +57,7 @@ def main():
         y_pred = model.predict(X_test).to_numpy().reshape(-1,)
         y_test = y_test.to_numpy().reshape(-1,)
 
-    if args.ml == 'lstm_multivariate':
+    if args.ml_model == 'lstm_multivariate':
         data_loader = data_loader.lstm_multivariate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         _save_model_dir_path = models.lstm_multivariate.save_model_dir_path
@@ -65,7 +65,7 @@ def main():
         y_pred = model.predict(X_test).reshape(-1,)
         y_test = y_test.reshape(-1,)
 
-    if args.ml == 'lightgbm':
+    if args.ml_model == 'lightgbm':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         _save_model_dir_path = models.lightgbm.save_model_dir_path
@@ -74,7 +74,7 @@ def main():
         y_pred = model.predict(X_test).to_numpy().reshape(-1,)
         y_test = y_test.to_numpy().reshape(-1,)
 
-    if args.ml == 'ensemble_XGBoost_lightgbm':
+    if args.ml_model == 'ensemble_XGBoost_lightgbm':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         _save_model_dir_path = models.ensemble.save_model_dir_path
@@ -83,7 +83,7 @@ def main():
         y_pred = model.predict(X_test)
         y_test = y_test.to_numpy().reshape(-1,)
 
-    if args.ml == 'ensemble_XGBoost_lightgbm_lstm_multivariate':
+    if args.ml_model == 'ensemble_XGBoost_lightgbm_lstm_multivariate':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         _save_model_dir_path = models.ensemble.save_model_dir_path
@@ -92,7 +92,7 @@ def main():
         y_pred = model.predict(X_test)
         y_test = y_test.to_numpy().reshape(-1,)
 
-    if args.ml == 'ensemble_lightgbm_lstm_multivariate':
+    if args.ml_model == 'ensemble_lightgbm_lstm_multivariate':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         _save_model_dir_path = models.ensemble.save_model_dir_path
@@ -101,7 +101,7 @@ def main():
         y_pred = model.predict(X_test)
         y_test = y_test.to_numpy().reshape(-1,)
 
-    if args.ml == 'ensemble_XGBoost_lstm_multivariate':
+    if args.ml_model == 'ensemble_XGBoost_lstm_multivariate':
         data_loader = data_loader.multi_variate.DataLoader(df, args)
         X_train, X_test, y_train, y_test = data_loader.load_data()
         _save_model_dir_path = models.ensemble.save_model_dir_path
