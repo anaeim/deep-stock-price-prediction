@@ -18,7 +18,11 @@ def main():
         model = model.lstm.Model()
         model.fit(X_train, y_train)
 
-
+    if args.ml == 'prophet':
+        data_loader = dataloader.neural_prophet.DataLoader(df, args)
+        df, df_train, df_val = data_loader.load_data()
+        model = models.prophet.Model(args)
+        model.fit(df_train, df_val)
         model.fit(df_train)
 
     if args.enable_save_model:
