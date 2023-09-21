@@ -35,6 +35,12 @@ def main():
         model = models.neural_prophet.Model(args)
         model.fit(df_train)
 
+    if args.ml == 'xgboost':
+        data_loader = data_loader.multi_variate.DataLoader(df, args)
+        X_train, X_test, y_train, y_test = data_loader.load_data()
+        model = models.xgboost.Model(args)
+        model.fit(X_train, y_train)
+
     if args.enable_save_model:
         model.save_model()
 
