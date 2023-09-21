@@ -15,6 +15,12 @@ from config import parse_args
 
 
 def main():
+    """Main function for running machine learning models and calculating Mean Squared Error (MSE)
+
+    This script loads data, selects a machine learning model based on the specified command-line arguments,
+    and calculates the MSE between the predicted and actual values.
+    """
+
     args = parse_args()
     df_path = Path().cwd() / "data" / f"{args.dataset}.csv" 
     df = pd.read_csv(df_path)
