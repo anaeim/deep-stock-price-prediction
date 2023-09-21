@@ -41,6 +41,14 @@ def main():
         model = models.xgboost.Model(args)
         model.fit(X_train, y_train)
 
+    if args.ml == 'lstm_multivariate':
+        data_loader = data_loader.lstm_multivariate.DataLoader(df, args)
+        X_train, X_test, y_train, y_test = data_loader.load_data()
+        model = models.lstm_multivariate.Model(args)
+        model.fit(X_train, y_train)
+
+
+
     if args.enable_save_model:
         model.save_model()
 
