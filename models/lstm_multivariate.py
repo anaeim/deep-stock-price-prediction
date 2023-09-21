@@ -9,7 +9,7 @@ BUFFER_SIZE = 100
 WINDOW_LENGTH = 24
 
 class Model:
-    """A class representing a XGBoost Regressor model for time series forecasting
+    """A class representing a tensoeflow lstm Regressor model for time series forecasting
 
     ...
 
@@ -19,8 +19,8 @@ class Model:
         A namespace containing model configuration arguments
     save_model_dir_path : Path
        The path to save the serialized model
-    model : xgb.XGBRegressor
-        xgb.XGBRegressor Model for time series forecasting
+    model : tensoeflow.keras.Model
+        tensoeflow.keras.Model Model for time series forecasting
 
     Methods
     -------
