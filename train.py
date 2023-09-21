@@ -25,6 +25,11 @@ def main():
         model.fit(df_train, df_val)
         model.fit(df_train)
 
+    if args.ml == 'neuralprophet':
+        data_loader = dataloader.neural_prophet.DataLoader(df, args)
+        df, df_train, df_val = data_loader.load_data()
+        model = models.neural_prophet.Model(args)
+
     if args.enable_save_model:
         model.save_model()
 
