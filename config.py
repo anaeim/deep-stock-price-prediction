@@ -14,7 +14,7 @@ def parse_args():
     add_arg = parser.add_argument
     add_arg("--ml-model", default='lstm', 
             choices=["lstm","prophet","neuralprophet","xgboost","lstm_multivariate","lightgbm",
-                     "ensemble_XGBoost_lightgbm"], type=str)
+                     "ensemble_XGBoost_lightgbm", "ensemble_XGBoost_lightgbm_lstm_multivariate"], type=str)
     add_arg("--test-size", default=0.35, help="If float, should be between 0.0 and 1.0", type=int)
     add_arg("--dataset", default="AAPL", choices=["AAPL","TSLA"])
     add_arg("--time-stamp", default=100, type=int)
