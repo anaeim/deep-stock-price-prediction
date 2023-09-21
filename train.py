@@ -7,6 +7,11 @@ from config import parse_args
 
 
 def main():
+    """Main function to load data, train machine learning models, and optionally save the trained model
+
+    This script reads a CSV dataset, performs data loading and model training based on the user's choice of machine
+    learning model, and can save the trained model if specified.
+    """
 
     args = parse_args()
     df_path = Path().cwd() / "data" / f"{args.dataset}.csv" 
@@ -23,12 +28,12 @@ def main():
         df, df_train, df_val = data_loader.load_data()
         model = models.prophet.Model(args)
         model.fit(df_train, df_val)
-        model.fit(df_train)
 
     if args.ml == 'neuralprophet':
         data_loader = dataloader.neural_prophet.DataLoader(df, args)
         df, df_train, df_val = data_loader.load_data()
         model = models.neural_prophet.Model(args)
+        model.fit(df_train)
 
     if args.enable_save_model:
         model.save_model()
