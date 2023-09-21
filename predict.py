@@ -65,6 +65,16 @@ def main():
         y_pred = model.predict(X_test).reshape(-1,)
         y_test = y_test.reshape(-1,)
 
+    if args.ml == 'lightgbm':
+        data_loader = data_loader.multi_variate.DataLoader(df, args)
+        X_train, X_test, y_train, y_test = data_loader.load_data()
+        _save_model_dir_path = models.lightgbm.save_model_dir_path
+        with _save_model_dir_path.open('rb') as fh:
+            model = pickle.load(fh)
+        y_pred = model.predict(X_test).to_numpy().reshape(-1,)
+        y_test = y_test.to_numpy().reshape(-1,)
+
+
     print(f"MSE: {math.sqrt(mean_squared_error(y_test,y_pred))}")
 
 
