@@ -57,6 +57,14 @@ def main():
         y_pred = model.predict(X_test).to_numpy().reshape(-1,)
         y_test = y_test.to_numpy().reshape(-1,)
 
+    if args.ml == 'lstm_multivariate':
+        data_loader = data_loader.lstm_multivariate.DataLoader(df, args)
+        X_train, X_test, y_train, y_test = data_loader.load_data()
+        _save_model_dir_path = models.lstm_multivariate.save_model_dir_path
+        model = load_model(_save_model_dir_path)
+        y_pred = model.predict(X_test).reshape(-1,)
+        y_test = y_test.reshape(-1,)
+
     print(f"MSE: {math.sqrt(mean_squared_error(y_test,y_pred))}")
 
 
