@@ -11,12 +11,38 @@ from sklearn.metrics import mean_squared_error
 
 
 class Model:
+    """Stacked LSTM Model for Time Series Forecasting
+
+    ...
+
+    Attributes
+    ----------
+    args : Namespace
+        A namespace containing configuration options
+    model : tensorflow.keras.Model
+        deep learning based on tensorflow library
+
+    Methods
+    -------
+    forward()
+        Builds the model architecture
+    fit(X_train, y_train)
+        Trains the model on the provided training data
+    save_model()
+        Saves the trained model to a file
+    predict(X_test)
+        Makes predictions on the provided test data
+    __call__(X_train, y_train)
+        Trains the model and optionally save it when the instance is called
+    """
 
     def __init__(self, args):
         self.args = args
         self.model = None
 
     def forward(self):
+        """Builds the model architecture
+        """
 
         self.model=Sequential()
         # Adding first LSTM layer
@@ -41,6 +67,15 @@ class Model:
         print(self.model.summary())
 
     def fit(self, X_train, y_train):
+        """Trains the model on the provided training data
+
+        Parameters
+        ----------
+        X_train : numpy.ndarray
+            Input training data (features)
+        y_train : numpy.ndarray
+            Target training data (labels)
+        """
 
         monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=10, 
                 verbose=1, mode='auto', restore_best_weights=True)
@@ -49,15 +84,31 @@ class Model:
                 callbacks=[monitor],verbose=1,epochs=self.args.epochs, batch_size=self.args.batch_size)
 
     def save_model(self):
+        """Saves the trained model to a file
+        """
 
         self.model.save('./model_keeper/lstm_model.h5')
 
     def predict(self, X_test):
+        """Makes predictions on the provided test data
+
+        Parameters
+        ----------
+        X_train : numpy.ndarray
+            Input testing data (features)
+
+        Returns
+        -------
+        numpy.ndarray
+            Target testing data (labels)
+        """
 
         y_predict = self.model.predict(X_test)
         return y_predict
 
     def __call__(self, X_train, y_train):
+        """Trains the model and optionally save it when the instance is called
+        """
 
         self.fit(X_train, y_train)
 
