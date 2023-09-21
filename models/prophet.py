@@ -44,7 +44,34 @@ class Model:
         """Initializes the Prophet model
         """
 
-        self.model = Prophet()
+        self.model = Prophet(
+            growth='linear',
+            seasonality_mode='multiplicative',
+            holidays_prior_scale=20,
+            daily_seasonality=False,
+            weekly_seasonality=False,
+            yearly_seasonality=False
+            ).add_seasonality(
+                name='monthly',
+                period=30.5,
+                fourier_order=55
+            ).add_seasonality(
+                name='daily',
+                period=1,
+                fourier_order=15
+            ).add_seasonality(
+                name='weekly',
+                period=7,
+                fourier_order=25
+            ).add_seasonality(
+                name='yearly',
+                period=365.25,
+                fourier_order=20
+            ).add_seasonality(
+                name='quarterly',
+                period=365.25/4,
+                fourier_order=55
+            ).add_country_holidays(country_name='China')
 
     def fit(self, df_train):
         """Fits the Prophet model to the training data
