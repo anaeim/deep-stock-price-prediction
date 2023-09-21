@@ -2,6 +2,14 @@ import argparse
 
 
 def parse_args():
+    """Parse command-line arguments using argparse
+
+    Returns
+    -------
+    argparse.Namespace
+        An object containing parsed command-line arguments
+    """
+
     parser = argparse.ArgumentParser()
     add_arg = parser.add_argument
     add_arg("--ml-model", default='lstm', choices=["lstm","prophet","neuralprophet"], type=str)
