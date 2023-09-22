@@ -7,7 +7,7 @@
   style="display: inline-block; margin: 0 auto; max-width: 600px">
 
 # Intro
-A collection of prominent and SOTA time-series forecatsing models, including deep, uni-variate, multi-variate and ensemble models.
+A collection of prominent and SOTA time-series forecasting models, including deep, uni-variate, multi-variate and ensemble models.
 
 # Installation
 To get started, you'll need Python and pip installed.
@@ -23,7 +23,7 @@ cd deep-stock-price-prediction
 ```
 
 3. Create directories for the stock data and the trained models<br>
-   You can download Apple (AAPL) Historical Stock Data from [this Kaggle web page](https://www.kaggle.com/datasets/tarunpaparaju/apple-aapl-historical-stock-data) and Tesla (TSLA) stock data from [this kaggle web page](https://www.kaggle.com/code/debashis74017/time-series-forecasting-tesla-stock/notebook).
+   You can download Apple (AAPL) Historical Stock Data from [this Kaggle web page](https://www.kaggle.com/datasets/tarunpaparaju/apple-aapl-historical-stock-data) and Tesla (TSLA) stock data from [this Kaggle web page](https://www.kaggle.com/code/debashis74017/time-series-forecasting-tesla-stock/notebook).
 ```
 mkdir data
 mkdir model_keeper
