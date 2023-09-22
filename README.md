@@ -71,8 +71,6 @@ The meaning of the flags:
 
 # Prediction
 ```
-python train.py --dataset AAPL \
-    --ml-model ensemble_XGBoost_lstm_multivariate \
-    --test-size 0.35 \
-    --time-stamp 100 
+python predict.py --dataset AAPL \
+    --ml-model ensemble_XGBoost_lstm_multivariate
 ```
