@@ -29,7 +29,7 @@ mkdir data
 mkdir model_keeper
 ```
 
-1. Install the requirements
+4. Install the requirements
 ```
 pip install -r requirements.txt
 ```
